@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="81">
+  <server artifactsdir="artifacts" commandRepositoryLocation="default" serverId="3573a421-827e-43f3-b1cd-69fedbdc29d8" />
+  <pipelines group="Java_Pipelines">
+    <pipeline name="Advent_Of_Code" isLocked="false">
+      <timer onlyOnChanges="true">0 0/5 * * * ?</timer>
+      <materials>
+        <git url="https://github.com/seppaleinen/adventofcode" />
+      </materials>
+      <stage name="Test_Stage">
+        <jobs>
+          <job name="Testing_Job">
+            <tasks>
+              <exec command="mvn">
+                <arg>clean</arg>
+                <arg>test</arg>
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+    <pipeline name="World_In_Movies" isLocked="false">
+      <timer onlyOnChanges="true">0 0/5 * * * ?</timer>
+      <materials>
+        <git url="https://github.com/seppaleinen/adventofcode" />
+      </materials>
+      <stage name="Test_Stage">
+        <jobs>
+          <job name="Testing_Job">
+            <tasks>
+              <exec command="mvn">
+                <arg>clean</arg>
+                <arg>test</arg>
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+  </pipelines>
+  <pipelines group="Ruby_Pipelines">
+    <pipeline name="Hello_Ruby" isLocked="false">
+      <timer onlyOnChanges="true">0 0/5 * * * ?</timer>
+      <materials>
+        <git url="https://github.com/seppaleinen/helloruby" />
+      </materials>
+      <stage name="Build_Stage">
+        <jobs>
+          <job name="Build_Job">
+            <tasks>
+              <exec command="bundle">
+                <arg>install</arg>
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+      <stage name="Test_Stage">
+        <jobs>
+          <job name="Testing_Job">
+            <resources>
+              <resource>ruby</resource>
+            </resources>
+            <tasks>
+              <exec command="bundle">
+                <arg>exec</arg>
+                <arg>rake</arg>
+                <arg>test</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+  </pipelines>
+  <pipelines group="Python_Pipelines">
+    <pipeline name="DjangoBlog" isLocked="false">
+      <timer onlyOnChanges="true">0 0/5 * * * ?</timer>
+      <materials>
+        <git url="https://github.com/seppaleinen/djangoblog" />
+      </materials>
+      <stage name="Build">
+        <jobs>
+          <job name="Pip_Install">
+            <tasks>
+              <exec command="pip">
+                <arg>install</arg>
+                <arg>-r</arg>
+                <arg>requirements.txt</arg>
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+      <stage name="Test">
+        <jobs>
+          <job name="Django_Test">
+            <tasks>
+              <exec command="/usr/bin/python">
+                <arg>manage.py</arg>
+                <arg>test</arg>
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+  </pipelines>
+</cruise>
+
