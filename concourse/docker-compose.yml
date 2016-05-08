@@ -3,6 +3,11 @@ version: "2"
 services:
   server:
     build: ./server
+    links:
+      - postgres:postgres
     ports:
       - "2222:2222"
       - "8080:8080"
+
+  postgres:
+    build: ./postgres
