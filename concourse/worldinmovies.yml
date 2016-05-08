@@ -1,0 +1,71 @@
+resources:
+- name: worldinmovies
+  type: git
+  source:
+    uri: https://github.com/seppaleinen/worldinmovies
+    branch: master
+
+jobs:
+- name: trigger
+  serial_groups: [trigger]
+  plan:
+  - get: worldinmovies
+    trigger: true
+  - task: unit
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: maven}
+      run:
+        path: echo
+        args: [""]
+
+- name: install
+  serial_groups: [trigger]
+  plan:
+  - aggregate:
+    - get: worldinmovies
+      passed: [trigger]
+      trigger: true
+  - task: compiling
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: seppaleinen/concourse}
+      inputs:
+      - name: worldinmovies
+      puts:
+      - name: worldinmovies
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+          mongod --fork --logpath /var/log/mongodb.log
+          mvn -f worldinmovies/pom.xml clean install
+
+
+- name: build docker
+  serial_groups: [trigger]
+  plan:
+  - aggregate:
+    - get: worldinmovies
+      passed: [install]
+      trigger: true
+  - task: building docker
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: seppaleinen/concourse}
+      inputs:
+      - name: worldinmovies
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+          mongod --fork --logpath /var/log/mongodb.log
+          mvn -f worldinmovies/pom.xml clean install -Pdocker

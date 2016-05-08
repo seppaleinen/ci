@@ -1,0 +1,26 @@
+resources:
+- name: concourse
+  type: git
+  source:
+    uri: https://github.com/seppaleinen/concourse
+    branch: master
+
+jobs:
+- name: Concourse
+  plan:
+  - get: concourse
+    trigger: true
+  - task: Lint-check
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: frolvlad/alpine-ruby}
+      inputs:
+      - name: concourse
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+          ruby -e "require 'yaml'; Dir.glob('concourse/*.yml') do |rb_file| YAML.load_file(rb_file) end"        
