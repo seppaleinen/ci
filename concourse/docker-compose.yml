@@ -11,3 +11,11 @@ services:
 
   postgres:
     build: ./postgres
+
+  worker:
+    build: ./worker
+    links:
+      - server:server
+    volumes_from:
+      - server
+    privileged: true
