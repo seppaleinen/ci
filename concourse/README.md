@@ -1,13 +1,9 @@
 # concourse
 
 
-```
-docker-compose build
-```
-
 Running concourse
 ```
-docker-compose up
+docker-compose down; docker-compose build && docker-compose up
 fly -t concourse login -c http://docker:8080
 fly -t concourse set-pipeline -p hello-world -c hello-world.yml
 fly -t concourse set-pipeline -p worldinmovies -c worldinmovies.yml
