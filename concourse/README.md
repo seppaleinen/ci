@@ -1,6 +1,7 @@
 # concourse
 
 
+port 2222
 Starting new concourse vagrantfile
 
 ```
