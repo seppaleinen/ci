@@ -5,3 +5,4 @@ services:
     build: ./server
     ports:
       - "2222:2222"
+      - "8080:8080"
