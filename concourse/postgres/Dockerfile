@@ -1,4 +1,4 @@
-FROM postgres:9.5
+FROM kiasaki/alpine-postgres
 
 ENV POSTGRES_PASSWORD postgres
 ENV POSTGRES_DB atc
