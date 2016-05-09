@@ -18,3 +18,6 @@ fly -t lite set-pipeline -p worldinmovies -c worldinmovies.yml
 
 [concourse pipeline](https://ci.concourse.ci/pipelines/main)
 [concourse pipeline src](https://github.com/concourse/concourse/blob/master/ci/pipelines/concourse.yml)
+
+Concourse is a CD-platform that's still under heavy development.
+The concept is to keep all the configuration separate in yml-files.
