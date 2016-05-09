@@ -6,8 +6,8 @@ services:
     links:
       - postgres:postgres
     ports:
-      - "2222:2222"
       - "8080:8080"
+      - "53:53"
 
   postgres:
     build: ./postgres
@@ -16,6 +16,7 @@ services:
     build: ./worker
     links:
       - server:server
+      - postgres:postgres
     volumes_from:
       - server
     privileged: true
