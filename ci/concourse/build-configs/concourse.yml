@@ -2,7 +2,7 @@ resources:
 - name: concourse
   type: git
   source:
-    uri: https://github.com/seppaleinen/concourse
+    uri: https://github.com/seppaleinen/tools
     branch: master
 
 jobs:
@@ -23,4 +23,4 @@ jobs:
         args:
         - -exc
         - |
-          ruby -e "require 'yaml'; Dir.glob('concourse/*.yml') do |rb_file| YAML.load_file(rb_file) end"        
+          ruby -e "require 'yaml'; Dir.glob('ci/concourse/*.yml') do |rb_file| YAML.load_file(rb_file) end"
