@@ -10,10 +10,12 @@ Here I will place tools to configure and manage platforms and servers
 Should probably separate kubernetes/openshift/mesos from stuff like
 chef/ansible/puppet
 
-* Kubernetes
-* Rancher
-* Mesos
-* Terraform
-* Chef
-* Ansible
-* Puppet
+* Cluster management
+  * Kubernetes
+  * Rancher
+  * Mesos
+* Deployment
+  * Terraform
+  * Chef
+  * Ansible
+  * Puppet
