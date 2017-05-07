@@ -16,3 +16,8 @@ docker-compose kill
 # To check logs
 docker-compose logs -f
 ```
+
+
+### Todo
+
+* Add maven sonarqube example
