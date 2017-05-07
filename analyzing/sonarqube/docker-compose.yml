@@ -1,0 +1,25 @@
+version: "2"
+
+services:
+  postgresql:
+    image: postgres:alpine
+    environment:
+      - POSTGRESQL_USER=sonar
+      - POSTGRESQL_PASS=sonar
+      - POSTGRESQL_DB=sonar
+#     volumes:
+#       - /opt/db/sonarqube/:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+  sonarqube:
+    #image: harbur/sonarqube:latest
+    image: sonarqube:alpine
+    links:
+      - postgresql:db
+    environment:
+      - DB_USER=sonar
+      - DB_PASS=sonar
+      - DB_NAME=sonar
+    ports:
+      - "9000:9000"
+      - "443"
