@@ -3,7 +3,7 @@
 
 
 #### Steps after startup
-* http://192.168.99.100:8080
+* http://localhost:8080
 * Copy init password from log
 * Follow installation wizard
 * Create admin user
@@ -12,7 +12,7 @@
 
 #### Commands
 ```
-docker-compose down; docker-compose build && docker-compose up
+docker-compose down; docker-compose up -d && docker-compose logs -f
 ```
 
 
@@ -23,3 +23,4 @@ docker-compose down; docker-compose build && docker-compose up
 * Automate default installation
 * Automate init password
 * Automate one project
+* Configure builder slaves
