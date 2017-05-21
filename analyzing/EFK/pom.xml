@@ -31,11 +31,6 @@
             <artifactId>spring-boot-starter-logging</artifactId>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.fluentd</groupId>
-            <artifactId>fluent-logger</artifactId>
-            <version>0.3.2</version>
-        </dependency>
 
         <!-- Test -->
         <dependency>
