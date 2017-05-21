@@ -1,0 +1,34 @@
+version: "2"
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.4.0
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:5.4.0
+    ports:
+      - 5601:5601
+    links:
+      - elasticsearch:elasticsearch
+
+  fluentd:
+    build: fluentd/
+    ports:
+      - 24224:24224
+    links:
+      - elasticsearch:elasticsearch
+
+  boot:
+    image: seppaleinen/efk-spring-boot
+    ports:
+      - 8080:8080
+    links:
+      - fluentd:fluentd
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: httpd.access
