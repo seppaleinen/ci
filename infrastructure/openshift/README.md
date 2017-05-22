@@ -9,7 +9,7 @@ simplify deployment and configurations of clusters.
 To start with, there's [Minishift](https://github.com/minishift/minishift/releases)
 which is a quick way to set up a local openshift environment
 
-default user/password is system/admin
+default user/password is admin/admin
 
 ```bash
 # To start/install minishift
