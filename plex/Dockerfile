@@ -1,0 +1,4 @@
+FROM timhaak/plexpass
+
+ENV PLEX_DISABLE_SECURITY 1
+ENV PLEX_USERNAME seppaleinen
