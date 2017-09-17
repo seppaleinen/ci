@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  postgres:
+    image: 'linuxserver/couchpotato'
+    container_name: couchpotato
+    ports:
+      - "5050:5050"
+    volumes:
+      - "~/Downloads/couchpotato:/config"
+      - "~/Downloads/couchpotato:/downloads"
+      - "~/Downloads/couchpotato:/movies"
+    environment:
+      TZ: Europe/Stockholm
