@@ -1,0 +1,12 @@
+version: '3'
+services:
+  rancher-server:
+    container_name: rancher-server
+    image: rancher/server:stable
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: curl -f "http://localhost:8080"
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
