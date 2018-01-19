@@ -31,7 +31,7 @@ services:
     command: bash -c "sleep 5; sentry upgrade --noinput && sentry createuser --email=test@test.se --password=password --superuser --no-input && sentry import sentry.json"
 
   sentry:
-    image: 'sentry:8.7'
+    image: 'sentry:8.22'
     links:
      - redis
      - postgres
@@ -50,7 +50,7 @@ services:
       SENTRY_REDIS_HOST: redis
 
   sentry_celery_beat:
-    image: 'sentry:8.7'
+    image: 'sentry:8.22'
     links:
      - redis
      - postgres
@@ -66,7 +66,7 @@ services:
     command: bash -c "sleep 60 && sentry run cron"
 
   sentry_celery_worker:
-    image: 'sentry:8.7'
+    image: 'sentry:8.22'
     links:
      - redis
      - postgres
