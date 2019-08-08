@@ -1,0 +1,19 @@
+{
+  "Port": 9117,
+  "AllowExternal": true,
+  "APIKey": "31xedn3h7ssvc8bmbog362sky969ycks",
+  "AdminPassword": null,
+  "InstanceId": "joazgg4bntv4lbe0xte9ziryox2o3cp75vd7gq1f8ugdm2hlvez893emy38fqqm9",
+  "BlackholeDir": null,
+  "UpdateDisabled": false,
+  "UpdatePrerelease": false,
+  "BasePathOverride": null,
+  "OmdbApiKey": null,
+  "OmdbApiUrl": null,
+  "ProxyUrl": null,
+  "ProxyType": 0,
+  "ProxyPort": null,
+  "ProxyUsername": null,
+  "ProxyPassword": null,
+  "ProxyIsAnonymous": true
+}
